@@ -293,3 +293,33 @@ extension WebViewController: UIWebViewDelegate {
     }
 }
 ```
+
+## Nota
+
+Si quisieramos pasarle la *urlString* desde el momento que instanciamos:
+
+```Swift
+	let xibView = WebViewController(stringUrl: "www.google.com")
+	self.navigationController?.pushViewController(xibView, animated: true)
+```
+
+tendríamos que agregar esto a nuestra clase
+
+```Swift
+
+	// Valor por defecto
+	var stringUrl: String = "www.google.com"
+
+	convenience init(stringUrl: String) {
+        self.init()
+
+        // Set
+        self.stringUrl = stringUrl
+    }
+```
+
+y usar self.stringUrl como variable al momento de cargar las vistas.
+
+## Fuente:
+
+* <a href="https://stackoverflow.com/questions/31331345/initializer-does-not-override-a-designed-initializer-from-its-superclass-error-i">Init convenience</a>
